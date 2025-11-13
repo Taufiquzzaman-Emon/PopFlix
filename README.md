@@ -26,5 +26,5 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/popflix.git
+   git clone https://github.com/Taufiquzzaman-Emon/PopFlix.git
    cd popflix
