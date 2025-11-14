@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
 @import "tailwindcss";
+@import "flowbite/dist/flowbite.css";
 
 @theme {
   --color-primary: #030014;
@@ -17,7 +18,7 @@
 
   --breakpoint-xs: 480px;
 
-  --background-image-hero-pattern: url("./src/assets/BG.png");
+  --background-image-hero-pattern: url("./src/assets/darkback.jpg");
 }
 
 @layer base {
@@ -50,7 +51,7 @@
 
 @layer components {
   .pattern {
-    @apply bg-hero-pattern w-full h-screen bg-center bg-cover absolute z-0;
+    @apply bg-hero-pattern w-full h-full bg-no-repeat bg-center bg-cover absolute z-0;
   }
 
   .wrapper {
@@ -89,7 +90,7 @@
     }
 
     & input {
-      @apply w-full bg-transparent py-2 sm:pr-10 pl-10 text-base text-gray-200 placeholder-light-200 outline-hidden;
+      @apply w-full bg-transparent py-2 sm:pr-10 pl-10 text-base text-gray-200 placeholder-light-200 outline-hidden border-none;
     }
   }
 
