@@ -3,7 +3,7 @@ import Search from "./components/Search";
 import Components from "./components/Spinner";
 import MovieCard from "./components/MovieCard";
 
-const API_URL = "https://api.themoviedb.org/3/discover/movie";
+const API_URL = "https://api.themoviedb.org/3";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 const API_OPTIONS = {
@@ -19,11 +19,13 @@ const App = () => {
   const [error, setError] = useState("");
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
-  const fetchMOVIES = async () => {
+  const fetchMOVIES = async (query = "") => {
     setLoading(true);
     setError("");
     try {
-      const endpoint = `${API_URL}?sort_by=popularity.desc`;
+      const endpoint = query
+        ? `${API_URL}/search/movie?query=${encodeURIComponent(query)}`
+        : `${API_URL}/discover/movie?sort_by=popularity.desc`;
       const response = await fetch(endpoint, API_OPTIONS);
 
       if (!response.ok) {
@@ -47,8 +49,8 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetchMOVIES();
-  }, []);
+    fetchMOVIES(search);
+  }, [search]);
 
   return (
     <main>
