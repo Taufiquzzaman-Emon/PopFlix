@@ -3,6 +3,7 @@ import Search from "./components/Search";
 import Components from "./components/Spinner";
 import MovieCard from "./components/MovieCard";
 import { useDebounce } from "react-use";
+import { updateSearch } from "./server";
 
 const API_URL = "https://api.themoviedb.org/3";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -45,6 +46,9 @@ const App = () => {
       }
 
       setMovies(data.results || []);
+      if (query && data.results.length > 0) {
+        await updateSearch(query, data.results[0]);
+      }
     } catch (error) {
       setError("Error fecthing movies. Please try again later.");
     } finally {
