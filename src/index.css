@@ -61,8 +61,12 @@
   .trending {
     @apply mt-20;
 
+    & .scroll-wrapper {
+      @apply relative flex items-center;
+    }
+
     & ul {
-      @apply flex flex-row overflow-y-auto gap-5 -mt-10 w-full hide-scrollbar;
+      @apply flex flex-row gap-5 overflow-x-auto w-full hide-scrollbar;
     }
 
     & ul li {
@@ -76,7 +80,21 @@
     & ul li img {
       @apply w-[127px] h-[163px] rounded-lg object-cover -ml-3.5;
     }
+
+    & .scroll-btn {
+      @apply absolute top-1/2 -translate-y-1/2 bg-teal-800/70 text-white px-3 py-2 rounded-full shadow-lg backdrop-blur-lg cursor-pointer hover:bg-teal-700 transition z-10 text-xl;
+    }
+
+    & .scroll-btn.left {
+      @apply left-0;
+    }
+
+    & .scroll-btn.right {
+      @apply right-0;
+    }
   }
+
+
 
   .search {
     @apply w-full bg-teal-800/30 border border-teal-500/20 backdrop-blur-sm px-4 py-3 rounded-lg mt-5 max-w-3xl mx-auto;
@@ -106,7 +124,7 @@
     @apply bg-teal-800/40 border border-teal-500/20 backdrop-blur-sm hover:bg-teal-800/50 p-5 rounded-2xl shadow-inner shadow-light-100/10;
 
     & img {
-      @apply rounded-lg h-auto w-full;
+      @apply rounded-lg h-auto w-auto object-cover;
     }
 
     & h3 {

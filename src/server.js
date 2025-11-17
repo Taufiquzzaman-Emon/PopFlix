@@ -44,3 +44,17 @@ export const updateSearch = async (search, movie) => {
     console.log(error);
   }
 };
+
+export const fetchMovies = async () => {
+  try {
+    const result = await database.listDocuments(
+      DATABASE_ID,
+      MOVIES_COLLECTION_ID,
+      [Query.limit(10), Query.orderDesc("count")]
+    );
+
+    return result.documents;
+  } catch (error) {
+    console.log(error);
+  }
+};
